@@ -1,0 +1,13 @@
+Package: thermPerf
+Title: Model fitting for thermal performance curves
+Version: 0.0.1
+Authors@R: person("Matthieu", "Bruneaux", email = "matthieu.bruneaux@gmail.com", role = c("aut", "cre"))
+Description: This package provides some basic functions to create and fit models
+    on thermal performance data.
+Depends:
+    R (>= 3.2.2)
+Imports:
+    minpack.lm
+License: MIT
+LazyData: true
+RoxygenNote: 5.0.1
