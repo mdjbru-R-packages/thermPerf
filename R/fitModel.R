@@ -17,9 +17,10 @@ fitModel = function(customModel, x, y, initParams = NULL) {
     if (is.null(initParams)) {
         initParams = customModel[["starting"]]
     }
-    fit = nlsLM(customModel[["formula"]],
-                start = customModel[["starting"]],
-                data = data.frame(x = x, y = y),
-                control = nls.lm.control(maxiter = 1e3))
+    fit = minpack.lm::nlsLM(customModel[["formula"]],
+                            start = customModel[["starting"]],
+                            data = data.frame(x = x, y = y),
+                            control = minpack.lm::nls.lm.control(maxiter = 1e3,
+                                                     maxfev = 1000 * (length(initParams) + 1)))
     return(fit)
 }
