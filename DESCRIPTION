@@ -7,7 +7,8 @@ Description: This package provides some basic functions to create and fit models
 Depends:
     R (>= 3.2.2)
 Imports:
-    minpack.lm
+    minpack.lm,
+    plotrix
 License: MIT
 LazyData: true
 RoxygenNote: 5.0.1

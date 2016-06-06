@@ -13,6 +13,7 @@ calculateAIC = function(fits) {
     #' fits = fitModels(getModelLibrary(), x, y)
     #' calculateAIC(fits)
     #'
+    fits[["data"]] = NULL
     modelAIC = unlist(lapply(fits, AIC))
     deltaAIC = modelAIC - min(modelAIC)
     modelWeight = exp(-deltaAIC/2) / sum(exp(-deltaAIC/2))

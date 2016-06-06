@@ -24,5 +24,7 @@ fitModels = function(customModels, x, y, initParams = NULL) {
         fit[[i]] = fitModel(customModels[[i]], x, y, initParam)
     }
     names(fit) = names(customModels)
+    fit[["data"]] = data.frame(x, y)
+    class(fit) = c("fitList", "list")
     return(fit)
 }
