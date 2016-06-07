@@ -1,9 +1,19 @@
 * thermPerf: model fitting for thermal performance curves
 
-*Disclaimer:* this is a collection of functions that we use in our research
+*Disclaimer:* This is a collection of functions that we use in our research
 group to fit curves to bacterial growth and yield data. The defaults in these
 functions are tuned for curve fitting using this data, and might be
 inappropriate for other temperature ranges/traits values/curve shapes!
+
+"Disclaimer #2:* Note that the AIC calculation might not be perfectly accurate;
+see the warning displayed when the package is loaded:
+#+BEGIN_EXAMPLE
+***
+WARNING: there is some concern about the way logLik is calculated by R for a nls fit
+(see http://r.789695.n4.nabble.com/LogLik-of-nls-td4657207.html).
+Maybe it would be better to calculate it "by hand" from the nlsLM fit?
+***
+#+END_EXAMPLE
 
 ** Installation
 
