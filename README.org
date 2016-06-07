@@ -28,7 +28,7 @@ plot(temp, growth, pch = 21, bg = "grey", las = 1,
      xlim = c(15, 35), ylim = c(0, 1), bty = "n")
 #+END_SRC
 
-images/raw-data.png
+file:images/raw-data.png
 
 #+BEGIN_SRC R
 # Fit the default models and plot the results
@@ -36,7 +36,7 @@ fits = fitModels(getModelLibrary(), temp, growth)
 plot(fits)
 #+END_SRC
 
-images/fitted-curves.png
+[images/fitted-curves.png]
 
 #+BEGIN_SRC R
 # Get the AIC weights and visualize them
@@ -44,7 +44,7 @@ weights = calculateAIC(fits)
 plot(weights)
 #+END_SRC
 
-images/aic-weights.png
+[[images/aic-weights.png]]
 
 #+BEGIN_SRC R
 # Interpolate trait value for some temperature
