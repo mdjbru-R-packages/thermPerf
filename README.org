@@ -20,24 +20,43 @@ library(thermPerf)
 # Some thermal performance data
 temp = c(17, 21, 24, 28, 31, 33, 
          17, 21, 24, 28, 31, 33)
-growth = c(0.3, 0.4, 0.68, 0.8, 0.82, 0.3, 
-           0.4, 0.45, 0.58, 0.75, 0.85, 0.6)
+growth = c(0.3, 0.4, 0.68, 0.82, 0.78, 0.3, 
+           0.4, 0.45, 0.58, 0.75, 0.83, 0.6)
 
 # Plot the raw data
-plot(temp, growth, pch = 21, bg = "grey", las = 1)
+plot(temp, growth, pch = 21, bg = "grey", las = 1,
+     xlim = c(15, 35), ylim = c(0, 1), bty = "n")
 #+END_SRC
 
-[[file:images/raw-data.png][images/raw-data.png]]
+images/raw-data.png
 
 #+BEGIN_SRC R
 # Fit the default models and plot the results
 fits = fitModels(getModelLibrary(), temp, growth)
 plot(fits)
+#+END_SRC
 
+images/fitted-curves.png
+
+#+BEGIN_SRC R
 # Get the AIC weights and visualize them
 weights = calculateAIC(fits)
 plot(weights)
+#+END_SRC
 
+images/aic-weights.png
+
+#+BEGIN_SRC R
 # Interpolate trait value for some temperature
 interpolateAtTemp(fits, 26)
 #+END_SRC
+
+Note that the AIC calculation might not be perfectly accurate; see the warning
+displayed when the package is loaded:
+#+BEGIN_EXAMPLE
+***
+WARNING: there is some concern about the way logLik is calculated by R for a nls fit
+(see http://r.789695.n4.nabble.com/LogLik-of-nls-td4657207.html).
+Maybe it would be better to calculate it "by hand" from the nlsLM fit?
+***
+#+END_EXAMPLE
