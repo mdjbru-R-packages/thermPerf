@@ -5,7 +5,7 @@ group to fit curves to bacterial growth and yield data. The defaults in these
 functions are tuned for curve fitting using this data, and might be
 inappropriate for other temperature ranges/traits values/curve shapes!
 
-"Disclaimer #2:* Note that the AIC calculation might not be perfectly accurate;
+*Disclaimer #2:* Note that the AIC calculation might not be perfectly accurate;
 see the warning displayed when the package is loaded:
 #+BEGIN_EXAMPLE
 ***
@@ -19,7 +19,7 @@ Maybe it would be better to calculate it "by hand" from the nlsLM fit?
 
 #+BEGIN_SRC R
 library(devtools)
-install_github("mdjbru-R-packages/thermPef")
+install_github("mdjbru-R-packages/thermPerf")
 #+END_SRC
 
 ** Quick example
