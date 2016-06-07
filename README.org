@@ -33,7 +33,7 @@ plot(temp, growth, pch = 21, bg = "grey", las = 1,
 #+BEGIN_SRC R
 # Fit the default models and plot the results
 fits = fitModels(getModelLibrary(), temp, growth)
-plot(fits)
+plot(fits, xlim = c(15, 35), ylim = c(0, 1), las = 1)
 #+END_SRC
 
 [[file:images/fitted-curves.png]]
