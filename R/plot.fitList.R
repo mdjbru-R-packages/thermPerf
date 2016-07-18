@@ -16,7 +16,10 @@ plot.fitList = function(fitList, fitCol = NULL, drawAverageFit = T, ...) {
                     ylim = range(d$y, na.rm = T),
                     xlab = "x",
                     ylab = "y",
-                    main = "")
+                    main = "",
+                    lwd = 3,
+                    cex = 1,
+                    col = "green")
     args = defaults
     # Update args
     for (n in names(arguments)) {
@@ -27,7 +30,7 @@ plot.fitList = function(fitList, fitCol = NULL, drawAverageFit = T, ...) {
     # Plot
     plot(d, xlim = args[["xlim"]], ylim = args[["ylim"]], pch = 21,
          bg = "black", xlab = args[["xlab"]], ylab = args[["ylab"]], las = 1,
-         bty = "n", main = args[["main"]])
+         bty = "n", main = args[["main"]], cex = args[["cex"]])
     # Fit colors
     if (!is.null(fitCol) && fitCol == "weights") {
         weights = calculateAIC(fitList)
@@ -61,6 +64,10 @@ plot.fitList = function(fitList, fitCol = NULL, drawAverageFit = T, ...) {
         yWeights = yWeights[orderedIndices]
         stopifnot(length(yWeights) == ncol(yp))
         yAverage = apply(yp, 1, function(x) sum(x * yWeights))
-        lines(xp, yAverage, col = "green", lwd = 3)
+        lines(xp, yAverage, col = args[["col"]], lwd = args[["lwd"]])
     }
+
+    # Redraw the points
+    points(d, pch = 21, bg = "black", cex = args[["cex"]])
+
 }
