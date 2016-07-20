@@ -70,3 +70,137 @@ WARNING: there is some concern about the way logLik is calculated by R for a nls
 Maybe it would be better to calculate it "by hand" from the nlsLM fit?
 ***
 #+END_EXAMPLE
+
+** Detailed usage
+
+*** customModel object
+
+**** Built-in library of models
+
+Models to be fitted are stored in objects of class =customModel=. One can
+define his own models to be fitted to the data, or use the (small) library of
+models already available in the library. *Note:* the built-in library is very
+small and contains only models of interest for our own research project. You
+should probably check which of those models are pertinent for your project, and
+add more models as suits your needs.
+
+#+BEGIN_SRC R
+# Available, pre-built models are available from getModelLibrary()
+library(thermPerf)
+models = getModelLibrary() # This returns a list of customModel objects
+str(models, 1) # There are 10 models in the pre-built library
+## List of 10
+##  $ linearFit  :List of 5
+##   ..- attr(*, "class")= chr "customModel"
+##  $ briere1    :List of 5
+##   ..- attr(*, "class")= chr "customModel"
+##  $ briere2    :List of 5
+##   ..- attr(*, "class")= chr "customModel"
+##  $ lactin1    :List of 5
+##   ..- attr(*, "class")= chr "customModel"
+##  $ candidate01:List of 5
+##   ..- attr(*, "class")= chr "customModel"
+##  $ candidate02:List of 5
+##   ..- attr(*, "class")= chr "customModel"
+##  $ candidate03:List of 5
+##   ..- attr(*, "class")= chr "customModel"
+##  $ candidate04:List of 5
+##   ..- attr(*, "class")= chr "customModel"
+##  $ candidate05:List of 5
+##   ..- attr(*, "class")= chr "customModel"
+##  $ candidate06:List of 5
+##   ..- attr(*, "class")= chr "customModel"
+#+END_SRC
+
+**** Structure of customModel object
+
+#+BEGIN_SRC R
+library(thermPerf)
+models = getModelLibrary() # This returns a list of customModel objects
+myModel = models[["briere1"]] # We take the list element called "briere1"
+myModel # This will output a summary of the customModel object
+## Custom model: Briere 1
+##
+##   model formula: y ~ a * x * (x - t0) * (tmax - x)^(1/2)
+##   parameters (n=3): a, t0, tmax
+#+END_SRC
+
+Each model is actually a list with all the information needed to perform a fit:
+
+#+BEGIN_SRC R
+str(myModel)
+## List of 5
+##  $ function  :function (x, params)  
+##  $ name      : chr "Briere 1"
+##  $ formula   :Class 'formula' length 3 y ~ a * x * (x - t0) * (tmax - x)^(1/2)
+##   .. ..- attr(*, ".Environment")=<environment: 0x3011878> 
+##  $ parameters: chr [1:3] "a" "t0" "tmax"
+##  $ starting  :List of 3
+##   ..$ a   : num 1
+##   ..$ t0  : num 15
+##   ..$ tmax: num 35
+##  - attr(*, "class")= chr "customModel"
+#+END_SRC
+
+The model elements are:
+- a function that can evaluate the model at an x value (i.e. a temperature
+  value) given a set of parameter values for the model
+- a name for the model
+- a formula describing the model
+- the model parameter names
+- a list of starting values for the model parameters, to be used when the fit
+  is performed with the =minpack.lm::nlsLM= function.
+
+**** Defining a new customModel object
+
+Custom models can easily be defined using the =buildModel= function:
+
+#+BEGIN_SRC R
+library(thermPerf)
+# Create a model for third-order polynomial
+# 1) Function
+mFunction = function(x, params) {
+# params model parameters, a0, a1, a2, a3
+    a0 = params[["a0"]]
+    a1 = params[["a1"]]
+    a2 = params[["a2"]]
+    a3 = params[["a3"]]
+    return(a0 + a1 * x + a2 * x^2 + a3 * x^3)
+}
+# 2) Name
+mName = "3rd-order polynomial"
+# 3) Formula
+mFormula = y ~ a0 + a1 * x + a2 * x^2 + a3 * x^3
+# 4) Model parameters
+mParams = c("a0", "a1", "a2", "a3")
+# 5) List of starting values for the parameters
+mStarting = list(a0 = 0, a1 = 1, a2 = 0.5, a3 = 0.1)
+# Create the customModel object
+myModel = buildModel(mFunction, mName, mFormula, mParams, mStarting)
+
+# Summary
+myModel
+## Custom model: 3rd-order polynomial
+##
+##   model formula: y ~ a0 + a1 * x + a2 * x^2 + a3 * x^3
+##   parameters (n=4): a0, a1, a2, a3
+#+END_SRC
+
+The model can be used for fit now:
+#+BEGIN_SRC R
+# Some thermal performance data
+temp = c(17, 21, 24, 28, 31, 33, 
+         17, 21, 24, 28, 31, 33)
+growth = c(0.3, 0.4, 0.68, 0.82, 0.78, 0.3, 
+           0.4, 0.45, 0.58, 0.75, 0.83, 0.6)
+
+# Plot the raw data
+plot(temp, growth, pch = 21, bg = "grey", las = 1,
+     xlim = c(15, 35), ylim = c(0, 1), bty = "n")
+
+# Fit the model, along with some models from the model library
+models = getModelLibrary()[c("linearFit", "lactin1")]
+models[["myModel"]] = myModel
+fits = fitModels(models, temp, growth)
+plot(fits)
+#+END_SRC

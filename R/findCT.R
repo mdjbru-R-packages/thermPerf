@@ -13,6 +13,7 @@ findCT = function(fitList, interval, fractionOptimum) {
     #'
     #' @return Named vector
     #'
+    #' @export
     curve = averageCurve(fitList, seq(interval[1], interval[2], length.out = 256))
     curveFun = splinefun(curve)
     optimum = findOptimum(fitList, interval)
