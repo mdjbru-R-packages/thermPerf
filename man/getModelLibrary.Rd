@@ -17,26 +17,31 @@ models = getModelLibrary()
 names(models) # To see the models included
 
 y = a + b * x + c * log(x) ^ 2 + d * x ^ (1/2)
-
+(eq. 2126 tableCurve)
 Parameters: a, b, c, d
 
 y = a + b * log(x) ^ 2 + c * log(x) + d * log(x) / x
+(eq. 3132 tableCurve)
 
 Parameters: a, b, c, d
 
 y = a + b * x^2 * log(x) + c * x^3
+(eq. 1076 tableCurve)
 
 Parameters: a, b, c
 
 y = a + b * x + c * x^2
+(eq. 1003 tableCurve)
 
 Parameters: a, b, c
 
 y = a + b * x^(1.5) + c * x^2
+(eq. 1040 tableCurve)
 
 Parameters: a, b, c
 
 y = 1 / (a + b * exp(x) + c * exp(-x))
+(eq. 1552 tableCurve)
 
 Parameters: a, b, c
 

@@ -70,7 +70,7 @@ getModelLibrary = function() {
 
     mFun = function(x, params) {
         #' y = a + b * x + c * log(x) ^ 2 + d * x ^ (1/2)
-        #'
+        #' (eq. 2126 tableCurve)
         #' Parameters: a, b, c, d
         #'
         a = params[["a"]]
@@ -79,7 +79,7 @@ getModelLibrary = function() {
         d = params[["d"]]
         return(a + b * x + c * log(x) ^ 2 + d * x ^ (1/2))
     }
-    mName = "Candidate 1 tableCurve"
+    mName = "Candidate 1 tableCurve (eq. 2126)"
     mFormula = y ~ a + b * x + c * log(x) ^ 2 + d * x ^ (1/2)
     mParams = c("a", "b", "c", "d")
     mStarting = list(a = 1, b = 1, c = 0.5, d = 1)
@@ -89,6 +89,7 @@ getModelLibrary = function() {
 
     mFun = function(x, params) {
         #' y = a + b * log(x) ^ 2 + c * log(x) + d * log(x) / x
+        #' (eq. 3132 tableCurve)
         #'
         #' Parameters: a, b, c, d
         #'
@@ -98,7 +99,7 @@ getModelLibrary = function() {
         d = params[["d"]]
         return(a + b * log(x) ^ 2 + c * log(x) + d * log(x) / x)
     }
-    mName = "Candidate 2 tableCurve"
+    mName = "Candidate 2 tableCurve (eq. 3132)"
     mFormula = y ~ a + b * log(x) ^ 2 + c * log(x) + d * log(x) / x
     mParams = c("a", "b", "c", "d")
     mStarting = list(a = 1, b = 1, c = 0.5, d = 1)
@@ -108,6 +109,7 @@ getModelLibrary = function() {
 
     mFun = function(x, params) {
         #' y = a + b * x^2 * log(x) + c * x^3
+        #' (eq. 1076 tableCurve)
         #'
         #' Parameters: a, b, c
         #'
@@ -116,7 +118,7 @@ getModelLibrary = function() {
         c = params[["c"]]
         return(a + b * x^2 * log(x) + c * x^3)
     }
-    mName = "Candidate 3 tableCurve"
+    mName = "Candidate 3 tableCurve (eq. 1076)"
     mFormula = y ~ a + b * x^2 * log(x) + c * x^3
     mParams = c("a", "b", "c")
     mStarting = list(a = 0, b = 1, c = 1)
@@ -126,6 +128,7 @@ getModelLibrary = function() {
 
     mFun = function(x, params) {
         #' y = a + b * x + c * x^2
+        #' (eq. 1003 tableCurve)
         #'
         #' Parameters: a, b, c
         #'
@@ -134,7 +137,7 @@ getModelLibrary = function() {
         c = params[["c"]]
         return(a + b * x + c * x^2)
     }
-    mName = "Candidate 4 tableCurve"
+    mName = "Candidate 4 tableCurve (eq. 1003)"
     mFormula = y ~ a + b * x + c * x^2
     mParams = c("a", "b", "c")
     mStarting = list(a = 0, b = 1, c = 1)
@@ -144,6 +147,7 @@ getModelLibrary = function() {
 
     mFun = function(x, params) {
         #' y = a + b * x^(1.5) + c * x^2
+        #' (eq. 1040 tableCurve)
         #'
         #' Parameters: a, b, c
         #'
@@ -152,7 +156,7 @@ getModelLibrary = function() {
         c = params[["c"]]
         return(a + b * x ^ (1.5) + c * x^2)
     }
-    mName = "Candidate 5 tableCurve"
+    mName = "Candidate 5 tableCurve (eq. 1040)"
     mFormula = y ~ a + b * x ^ (1.5) + c * x^2
     mParams = c("a", "b", "c")
     mStarting = list(a = 0, b = 1, c = 1)
@@ -162,6 +166,7 @@ getModelLibrary = function() {
 
     mFun = function(x, params) {
         #' y = 1 / (a + b * exp(x) + c * exp(-x))
+        #' (eq. 1552 tableCurve)
         #'
         #' Parameters: a, b, c
         #'
@@ -170,7 +175,7 @@ getModelLibrary = function() {
         c = params[["c"]]
         return(1 / (a + b * exp(x) + c * exp(-x)))
     }
-    mName = "Candidate 6 tableCurve"
+    mName = "Candidate 6 tableCurve (eq. 1552)"
     mFormula = y ~ 1 / (a + b * exp(x) + c * exp(-x))
     mParams = c("a", "b", "c")
     mStarting = list(a = 0.4, b = 1e-16, c = 1e6)
