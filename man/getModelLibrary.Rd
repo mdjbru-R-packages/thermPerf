@@ -46,4 +46,3 @@ y = 1 / (a + b * exp(x) + c * exp(-x))
 Parameters: a, b, c
 
 }
-

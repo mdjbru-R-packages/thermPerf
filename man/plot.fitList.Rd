@@ -15,4 +15,3 @@ AIC weight}
 \description{
 Accepted parameters: xlim, ylim
 }
-

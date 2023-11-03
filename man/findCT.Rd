@@ -23,4 +23,3 @@ Named vector
 Note: No check is done to ensure that those CTs are unique. The curve
 should be checked visually to ensure that the analysis makes sense.
 }
-

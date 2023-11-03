@@ -22,4 +22,3 @@ Find the optimum performance and the temperature at which it occurs
 within a given interval for a list of fits (using their AIC-weighted
 average)
 }
-

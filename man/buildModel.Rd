@@ -44,4 +44,3 @@ y = c(2, 4, 3, 7, 8, 7, 10, 11)
 fit = fitModel(myModel, x, y)
 
 }
-

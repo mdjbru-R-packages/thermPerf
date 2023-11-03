@@ -17,4 +17,3 @@ A data frame with x and y columns
 \description{
 Calculate an average curve from a list of fits, using the AIC weights.
 }
-

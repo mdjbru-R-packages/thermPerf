@@ -18,4 +18,3 @@ list
 \description{
 Interpolate thermal performance using a list of fits
 }
-

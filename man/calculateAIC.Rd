@@ -22,4 +22,3 @@ fits = fitModels(getModelLibrary(), x, y)
 calculateAIC(fits)
 
 }
-

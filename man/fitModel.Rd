@@ -23,4 +23,3 @@ Output from nlsLM
 The fitting itself is performed with the nlsLM() function from the
 minpack.lm package.
 }
-
