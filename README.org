@@ -1,6 +1,6 @@
 * thermPerf: model fitting for thermal performance curves
 
-**(Note on 2023-11-03: If you would like to fit thermal performance curves using an R package, I recommend that you use the [[https://padpadpadpad.github.io/rTPC/][rTPC]] package by Daniel Padfield and Hannah O'Sullivan ([[https://cran.r-project.org/package=rTPC][available on CRAN]]) rather than thermPerf. rTPC is much more advanced than thermPerf and it has very nice documentation in the form of detailed vignettes.)**
+*(Note on 2023-11-03: If you would like to fit thermal performance curves using an R package, I recommend that you use the [[https://padpadpadpad.github.io/rTPC/][rTPC]] package by Daniel Padfield and Hannah O'Sullivan ([[https://cran.r-project.org/package=rTPC][available on CRAN]]) rather than thermPerf. rTPC is much more advanced than thermPerf and it has very nice documentation in the form of detailed vignettes.)*
 
 *Disclaimer:* This is a collection of functions that we use in our research
 group to fit curves to bacterial growth and yield data. The defaults in these
